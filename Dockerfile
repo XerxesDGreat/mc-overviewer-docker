@@ -19,6 +19,7 @@ RUN touch /var/log/overviewer.log
 RUN chown -R ${USER_ID}:${GROUP_ID} /home/daemon
 ENV HOME=/home/daemon
 USER ${USER_ID}:${GROUP_ID}
+ADD overviewer.cfg /home
 
 CMD cron && tail -f /var/log/overviewer.log
 #ENTRYPOINT ["/bin/bash", "-c","overviewer.py --config=/minecraft/overviewer.cfg;overviewer.py --config=/minecraft/overviewer.cfg --genpoi"]
