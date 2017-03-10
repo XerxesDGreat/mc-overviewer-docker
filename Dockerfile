@@ -14,4 +14,5 @@ ADD overviewer.cfg /opt/overviewer/overviewer.cfg
 ADD runOverviewer.sh /opt/overviewer/runOverviewer.sh
 RUN chmod +x /opt/overviewer/runOverviewer.sh
 
+CMD ["tail", "-f", "/dev/null"]
 #ENTRYPOINT ["/bin/bash", "-c","overviewer.py --config=/minecraft/overviewer.cfg;overviewer.py --config=/minecraft/overviewer.cfg --genpoi"]
