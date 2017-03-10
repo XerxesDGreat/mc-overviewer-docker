@@ -1,0 +1,7 @@
+docker_id=$(docker ps | grep overviewer | cut -d " " -f 1)
+if [[ "$docker_id" == "" ]]
+then
+    echo "no overviewer docker running"
+    exit
+fi
+docker exec -d $docker_id /opt/overviewer/runOverviewer.sh
