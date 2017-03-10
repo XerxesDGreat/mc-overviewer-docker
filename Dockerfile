@@ -11,6 +11,6 @@ RUN chmod 775 /var/log/overviewer.log
 ADD overviewer.cfg /opt/overviewer/overviewer.cfg
 ADD runOverviewer.sh /opt/overviewer/runOverviewer.sh
 RUN chmod +x /opt/overviewer/runOverviewer.sh
-ADD textures/Faithful_4.zip /opt/overviewer/textures/Faithful_4.zip
+COPY textures /opt/overviewer/textures/
 
 CMD ["tail", "-f", "/dev/null"]
