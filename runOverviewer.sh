@@ -1,5 +1,11 @@
 #!/bin/bash
-t=$(time)
-echo "run starting at ${t}"
-overviewer.py --config=/opt/overviewer/overviewer.cfg
-overviewer.py --config=/opt/overviewer/overviewer.cfg --genpoi
+st=$(date)
+logfile=/minecraft/overviewer.log
+echo "run starting at ${st}" >> ${logfile} 
+overviewer.py --config=/opt/overviewer/overviewer.cfg >> ${logfile}
+overviewer.py --config=/opt/overviewer/overviewer.cfg --genpoi >> ${logfile}
+et=$(date)
+echo "run ended at ${et}" >> ${logfile}
+echo "" >> ${logfile}
+echo "==========================" >> ${logfile}
+echo "" >> ${logfile}
