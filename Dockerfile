@@ -8,7 +8,6 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt
 RUN touch /var/log/overviewer.log
 RUN chmod 775 /var/log/overviewer.log
 
-ADD overviewer.cfg /opt/overviewer/overviewer.cfg
 ADD runOverviewer.sh /opt/overviewer/runOverviewer.sh
 RUN chmod +x /opt/overviewer/runOverviewer.sh
 ADD minecraft_client.jar /root/.minecraft/versions/1.11/1.11.jar
