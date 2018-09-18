@@ -6,11 +6,6 @@ lObserver = LoggingObserver()
 jsObserver = JSObserver(outputdir)
 observer = MultiplexingObserver(lObserver, jsObserver)
 
-end_lighting_0 = [Base(), EdgeLines(), Lighting(strength=0)]
-end_lighting_smooth_0 = [Base(), EdgeLines(), SmoothLighting(strength=0)]
-end_lighting_1 = [Base(), EdgeLines(), Lighting(strength=1.0)]
-end_lighting_smooth_1 = [Base(), EdgeLines(), SmoothLighting(strength=1.0)]
-
 worlds["survival"] = "/world"
 worlds["cora_peaceful"] = "/cora_world"
 
@@ -45,46 +40,46 @@ renders["Survival"] = {
         }
     ],
     "markers": [
-        dict(name="POIs", filterFunction=poiFilter),
-        dict(name="Towns", filterFunction=townFilter),
-        dict(name="All signs", filterFunction=signFilter)
+#        dict(name="POIs", filterFunction=poiFilter),
+#        dict(name="Towns", filterFunction=townFilter),
+#        dict(name="All signs", filterFunction=signFilter)
     ]
 }
 
-renders["Survival Night"] = {
-    "world": "survival",
-    "title": "Survival Night",
-    "rendermode": smooth_night,
-    "dimension": "overworld"
-}
-
-renders["The End 0"] = {
-    "world": "survival",
-    "title": "The End 0",
-    "rendermode": end_lighting_0,
-    "dimension": "end"
-}
-
-renders["The End 1"] = {
-    "world": "survival",
-    "title": "The End 1",
-    "rendermode": end_lighting_1,
-    "dimension": "end"
-}
-
-renders["The End Smooth 0"] = {
-    "world": "survival",
-    "title": "The End Smooth 0",
-    "rendermode": end_lighting_smooth_0,
-    "dimension": "end"
-}
-
-renders["The End Smooth 1"] = {
-    "world": "survival",
-    "title": "The End Smooth 1",
-    "rendermode": end_lighting_smooth_1,
-    "dimension": "end"
-}
+#renders["Survival Night"] = {
+#    "world": "survival",
+#    "title": "Survival Night",
+#    "rendermode": smooth_night,
+#    "dimension": "overworld"
+#}
+#
+#renders["The End 0"] = {
+#    "world": "survival",
+#    "title": "The End 0",
+#    "rendermode": end_lighting_0,
+#    "dimension": "end"
+#}
+#
+#renders["The End 1"] = {
+#    "world": "survival",
+#    "title": "The End 1",
+#    "rendermode": end_lighting_1,
+#    "dimension": "end"
+#}
+#
+#renders["The End Smooth 0"] = {
+#    "world": "survival",
+#    "title": "The End Smooth 0",
+#    "rendermode": end_lighting_smooth_0,
+#    "dimension": "end"
+#}
+#
+#renders["The End Smooth 1"] = {
+#    "world": "survival",
+#    "title": "The End Smooth 1",
+#    "rendermode": end_lighting_smooth_1,
+#    "dimension": "end"
+#}
 
 renders["Cora's World"] = {
     "world": "cora_peaceful",
@@ -92,8 +87,8 @@ renders["Cora's World"] = {
     "rendermode": smooth_lighting,
     "dimension": "overworld",
     "markers": [
-        dict(name="POIs", filterFunction=poiFilter),
-        dict(name="Towns", filterFunction=townFilter),
-        dict(name="All signs", filterFunction=signFilter)
+#        dict(name="POIs", filterFunction=poiFilter),
+#        dict(name="Towns", filterFunction=townFilter),
+#        dict(name="All signs", filterFunction=signFilter)
     ]
 }
