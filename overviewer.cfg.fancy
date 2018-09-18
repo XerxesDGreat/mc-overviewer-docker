@@ -1,0 +1,99 @@
+from observer import MultiplexingObserver, LoggingObserver, JSObserver
+
+outputdir = "/mcmap"
+
+lObserver = LoggingObserver()
+jsObserver = JSObserver(outputdir)
+observer = MultiplexingObserver(lObserver, jsObserver)
+
+end_lighting_0 = [Base(), EdgeLines(), Lighting(strength=0)]
+end_lighting_smooth_0 = [Base(), EdgeLines(), SmoothLighting(strength=0)]
+end_lighting_1 = [Base(), EdgeLines(), Lighting(strength=1.0)]
+end_lighting_smooth_1 = [Base(), EdgeLines(), SmoothLighting(strength=1.0)]
+
+worlds["survival"] = "/world"
+worlds["cora_peaceful"] = "/cora_world"
+
+def townFilter(poi):
+    if poi["id"] == "Sign" or poi["id"] == "minecraft:sign":
+        print "a"
+        if "town" in poi["Text1"].lower():
+            print poi["Text2"]
+            return poi["Text2"]
+
+def poiFilter(poi):
+    if poi["id"] == "Sign" or poi["id"] == "minecraft:sign":
+        if "poi" in poi["Text1"].lower():
+            return "\n".join([poi["Text1"], poi["Text2"], poi["Text3"], poi["Text4"]])
+
+def signFilter(poi):
+    if poi["id"] == "Sign" or poi["id"] == "minecraft:sign":
+        return "\n".join([poi["Text1"], poi["Text2"], poi["Text3"], poi["Text4"]])
+
+renders["Survival"] = {
+    "world": "survival",
+    "title": "Survival",
+    "rendermode": smooth_lighting,
+    "dimension": "overworld",
+    "manualpois": [
+        {
+            "id":"Town",
+            "x":3206,
+            "y":64,
+            "z":-2181,
+            "name":"Shanin's current place"
+        }
+    ],
+    "markers": [
+        dict(name="POIs", filterFunction=poiFilter),
+        dict(name="Towns", filterFunction=townFilter),
+        dict(name="All signs", filterFunction=signFilter)
+    ]
+}
+
+renders["Survival Night"] = {
+    "world": "survival",
+    "title": "Survival Night",
+    "rendermode": smooth_night,
+    "dimension": "overworld"
+}
+
+renders["The End 0"] = {
+    "world": "survival",
+    "title": "The End 0",
+    "rendermode": end_lighting_0,
+    "dimension": "end"
+}
+
+renders["The End 1"] = {
+    "world": "survival",
+    "title": "The End 1",
+    "rendermode": end_lighting_1,
+    "dimension": "end"
+}
+
+renders["The End Smooth 0"] = {
+    "world": "survival",
+    "title": "The End Smooth 0",
+    "rendermode": end_lighting_smooth_0,
+    "dimension": "end"
+}
+
+renders["The End Smooth 1"] = {
+    "world": "survival",
+    "title": "The End Smooth 1",
+    "rendermode": end_lighting_smooth_1,
+    "dimension": "end"
+}
+
+renders["Cora's World"] = {
+    "world": "cora_peaceful",
+    "title": "Cora's World",
+    "rendermode": smooth_lighting,
+    "dimension": "overworld",
+    "markers": [
+        dict(name="POIs", filterFunction=poiFilter),
+        dict(name="Towns", filterFunction=townFilter),
+        dict(name="All signs", filterFunction=signFilter)
+    ]
+}
